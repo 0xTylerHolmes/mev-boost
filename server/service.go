@@ -681,7 +681,10 @@ func (m *BoostService) processElectraPayload(w http.ResponseWriter, req *http.Re
 	}
 
 	// Add request headers
-	headers := map[string]string{HeaderKeySlotUID: currentSlotUID}
+	headers := map[string]string{
+		HeaderKeySlotUID:      currentSlotUID,
+		HeaderStartTimeUnixMS: fmt.Sprintf("%d", time.Now().UTC().UnixMilli()),
+	}
 
 	// Prepare for requests
 	var wg sync.WaitGroup
