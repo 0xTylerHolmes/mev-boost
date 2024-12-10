@@ -10,6 +10,7 @@ linters:
     - godot
     - godox
     - lll
+    - mnd
     - nlreturn
     - nonamedreturns
     - paralleltest
@@ -43,6 +44,13 @@ linters:
     #
     # Disabled because deprecated:
     #
+    - copyloopvar
+
+    #
+    # Disabled due to versioning:
+    #
+    - intrange
+    - exportloopref
 
 
 linters-settings:
