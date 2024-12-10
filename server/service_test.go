@@ -682,7 +682,7 @@ func TestGetPayload(t *testing.T) {
 			} else {
 				w.WriteHeader(http.StatusInternalServerError)
 				_, err := w.Write([]byte(`{"code":500,"message":"internal server error"}`))
-				require.NoError(t, err)
+				require.NoError(t, err, "failed to write error response") //nolint:testifylint // if we fail here the test is compromised
 			}
 			count++
 		})
@@ -704,7 +704,7 @@ func TestGetPayload(t *testing.T) {
 			} else {
 				w.WriteHeader(http.StatusInternalServerError)
 				_, err := w.Write([]byte(`{"code":500,"message":"internal server error"}`))
-				require.NoError(t, err)
+				require.NoError(t, err, "failed to write error response") //nolint:testifylint // if we fail here the test is compromised
 			}
 		})
 		rr := backend.request(t, http.MethodPost, path, payload)
